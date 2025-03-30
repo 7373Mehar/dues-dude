@@ -1,84 +1,76 @@
-# Turborepo starter
+Dues Dude
 
-This Turborepo starter is maintained by the Turborepo core team.
+Dues Dude is a bill-splitting application designed to help users easily manage and divide expenses. The project is built using Next.js for both the frontend and backend, with MongoDB as the database.
 
-## Using this example
+🚀 Project Architecture
 
-Run the following command:
+Frontend: Next.js (React)
 
-```sh
-npx create-turbo@latest
-```
+Backend: Next.js (API Routes)
 
-## What's inside?
+Database: MongoDB
 
-This Turborepo includes the following packages/apps:
+Monorepo: Managed using Turborepo
 
-### Apps and Packages
+📂 Folder Structure
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+DuesDude/
+│── apps/
+│   ├── frontend/   # Frontend (Next.js)
+│   ├── backend/    # Backend (Next.js API)
+│── packages/
+│   ├── ui/         # Shared UI components
+│── turbo.json      # Turborepo configuration
+│── package.json    # Root package manager
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+🔧 Setup Instructions
 
-### Utilities
+1️⃣ Install Dependencies
 
-This Turborepo has some additional tools already setup for you:
+Run the following command in the root folder to install dependencies for all packages:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+npm install
 
-### Build
+2️⃣ Start the Development Servers
 
-To build all apps and packages, run the following command:
+Run the following command in the root folder to start both the frontend and backend simultaneously:
 
-```
-cd my-turborepo
-pnpm build
-```
+npm run dev
 
-### Develop
+This will start:
 
-To develop all apps and packages, run the following command:
+Frontend on http://localhost:3000
 
-```
-cd my-turborepo
-pnpm dev
-```
+Backend on http://localhost:3001
 
-### Remote Caching
+3️⃣ Environment Variables
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+Create .env.local files inside both apps/frontend and apps/backend with the required variables.
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+Backend (apps/backend/.env.local)
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+MONGODB_URI=mongodb+srv://your_user:your_password@cluster.mongodb.net/mydatabase
 
-```
-cd my-turborepo
-npx turbo login
-```
+4️⃣ Testing API Connection
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+You can test the backend by visiting:
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+http://localhost:3001/api/test
 
-```
-npx turbo link
-```
+It should return:
 
-## Useful Links
+{ "message": "Connected to MongoDB successfully!" }
 
-Learn more about the power of Turborepo:
+5️⃣ Using Shared UI Components
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+The packages/ui package contains shared components such as buttons. Example usage in apps/frontend/app/page.tsx:
+
+import { Button } from "@repo/ui";
+
+export default function Home() {
+  return <Button onClick={() => alert("Hello World!")}>Click Me</Button>;
+}
+
+✅ Contributions
+
+Feel free to contribute by submitting a pull request!
