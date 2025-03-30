@@ -43,14 +43,6 @@ Frontend on http://localhost:3000
 
 Backend on http://localhost:3001
 
-3️⃣ Environment Variables
-
-Create .env.local files inside both apps/frontend and apps/backend with the required variables.
-
-Backend (apps/backend/.env.local)
-
-MONGODB_URI=mongodb+srv://your_user:your_password@cluster.mongodb.net/mydatabase
-
 4️⃣ Testing API Connection
 
 You can test the backend by visiting:
